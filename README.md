@@ -1,33 +1,19 @@
 # FitTrack
 
-Habit tracker and fitness dashboard for a 105-day challenge to get fit by September 1, 2026.
-
-**Live app:** https://fittrack-2246a.web.app
-
-## What it tracks
-
-| Habit | Target |
-|-------|--------|
-| Weight | Daily weigh-in (102.3kg start, 88kg goal) |
-| Protein | 120g/day |
-| Calories | Configurable daily target |
-| Steps | 15,000/day |
-| Pushups | Progressive (wall to full, goal: 20) |
-| Sleep | 6-7.5 hrs/night |
-| Cigarettes | 5 or fewer/day |
-| Skincare AM/PM | Morning and night routine |
-| Gym | Check-in |
-| NoFap | 0 per day (max 1) |
+A habit tracking PWA with real-time cross-device sync, built for time-bound fitness challenges. Set a goal, pick your habits, and track daily progress with charts and streak counters.
 
 ## Features
 
-- **Dashboard** with countdown timer, weight progress, streak counter, and quick-tap daily checklist
-- **Weekly summary** with averages, week-over-week comparison, and per-habit pie charts
-- **Charts page** with line charts (weight, steps, calories, protein, pushups, sleep, cigs), GitHub-style heatmap, and completion pies. Supports 7D/30D/90D/All range selection
-- **Pushup Quest** side quest with 5-stage progression from wall pushups to 20 consecutive full pushups
-- **Settings** for configurable targets, profile, and account management
-- **Real-time sync** across devices via Firebase Firestore
-- **PWA** installable on Android and desktop
+- **Daily habit checklist** — quick-tap checkboxes and numeric inputs for fast logging
+- **Countdown timer** — visual progress ring showing days remaining in your challenge
+- **Weight tracker** — start/current/goal with trend visualization
+- **Streak counter** — per-habit streak tracking with fire indicators
+- **Charts** — line charts, GitHub-style activity heatmap, and completion pie charts with 7D/30D/90D/All range selector
+- **Weekly summary** — averages, week-over-week deltas, daily breakdown cards
+- **Side quests** — progressive challenge system (e.g., pushup progression from beginner to advanced)
+- **Real-time sync** — log on your phone, see it on your laptop instantly
+- **PWA** — installable on Android and desktop, works like a native app
+- **Dark theme** — mobile-first responsive design
 
 ## Tech stack
 
@@ -35,9 +21,9 @@ Habit tracker and fitness dashboard for a 105-day challenge to get fit by Septem
 - Firebase Authentication (email/password)
 - Cloud Firestore (real-time sync)
 - Firebase Hosting
-- Recharts
-- date-fns
-- lucide-react
+- Recharts for data visualization
+- date-fns for date utilities
+- lucide-react for icons
 
 ## Setup
 
@@ -48,15 +34,14 @@ npm install
 npm run dev
 ```
 
-Runs at `http://localhost:5173`.
+### Firebase configuration
 
-### Firebase
+The app requires a Firebase project with Authentication and Firestore enabled:
 
-The app uses Firebase for auth and data sync. The config in `src/firebase.js` points to the production project. To use your own:
-
-1. Create a Firebase project at [console.firebase.google.com](https://console.firebase.google.com)
-2. Enable Authentication (Email/Password) and Firestore Database
-3. Replace the config in `src/firebase.js` with your own
+1. Create a project at [console.firebase.google.com](https://console.firebase.google.com)
+2. Enable **Authentication** (Email/Password provider)
+3. Create a **Firestore Database**
+4. Register a web app and copy the config into `src/firebase.js`
 
 ### Deploy
 
@@ -75,11 +60,11 @@ src/
   hooks/useHabits.js       # Firestore CRUD + streaks
   components/
     Layout.jsx             # Bottom nav + page shell
-    Countdown.jsx          # Sept 1 countdown ring
+    Countdown.jsx          # Challenge countdown ring
     DailyChecklist.jsx     # Habit input cards
     WeightTracker.jsx      # Weight progress display
     StreakCounter.jsx       # Per-habit streak grid
-    PushupQuest.jsx        # Pushup progression timeline
+    PushupQuest.jsx        # Side quest progression timeline
     Login.jsx              # Auth screen
   pages/
     Dashboard.jsx          # Main daily view
@@ -94,3 +79,7 @@ src/
     CompletionPie.jsx      # Donut completion chart
     ProgressRing.jsx       # Circular progress indicator
 ```
+
+## License
+
+MIT
